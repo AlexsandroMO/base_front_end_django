@@ -49,12 +49,12 @@ def rateall():
                 ['CDI D', (rate_all[1][1])/30, '(dia)'],
                 ['SELIC', rate_all[2][3], '(ano)'],
                 ['IGPM', rate_all[3][2], '(ano)'],
-                ['POUPANÇA A', poup, '(ano)'],
-                ['POUPANÇA M', poup/12, '(mes)'],
-                ['POUPANÇA D', (poup/12)/30, '(dia)']
+                ['POUPANÇA A', round(poup,2), '(ano)'],
+                ['POUPANÇA M', round(poup/12,4), '(mes)'],
+                ['POUPANÇA D', round((poup/12)/30,4), '(dia)']
                 ]
 
-    rate_data = pd.DataFrame(data=rate_rate, columns=['TAXA','VALOR','PRAZO'])
+    rate_data = pd.DataFrame(data=rate_rate, columns=['RATE','VALUE','TERM'])
 
     #----------------------------------------------
     response_object = requests.get('https://www.poupardinheiro.com.br/financas/734-o-que-e-cdi-valor-hoje', headers=header)
@@ -79,7 +79,7 @@ def rateall():
 
     stock_exchange = pd.DataFrame(data=result_coins,columns=['ACTIONS','VALUES','RANGE'])
 
-    return stock_exchange
+    return [stock_exchange, rate_data]
 
 
 

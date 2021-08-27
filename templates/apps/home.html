@@ -5,35 +5,18 @@
     <!-- <img src="http://www.atpsolar.com.br/wp-content/uploads/2017/11/placa-post.png" alt="Intro Site" width=350 height=210> -->
 
 <div class="div.margem">
-  <p>Testes para Calcuos de Placas Solares</p>
-  </div>
-    <div class="content-section">
-    <h2>Projetos em Desenvolvimento</h2>
-      <p class='text-muted'>Plataforma de Desenvolvimento | Ciencia de Dados em Python / Flask</p>
+  <p>Cotations</p>
+</div>
+  <div class="content-section">
+    <h4>Market Rate</h4>
+      <p class='text-muted'>Coins and Stock Exchange</p>
         
-      <ul class="list-group">
-        <td>
-          <li class="list-group-item list-group-item-light"><a href="#" class="link_thumb" style="color: #848484;">Calcular Dados Solares &nbsp &nbsp &nbsp <img src="https://static.escolakids.uol.com.br/conteudo_legenda/6b20bd2849c3215649eef2000b9d0b62.jpg" alt="some text" width=50 height=30></li>
-          <li class="list-group-item list-group-item-light"><a href="#" class="link_thumb" style="color: #848484;">Calcular Dados Solares &nbsp &nbsp &nbsp <img src="https://static.escolakids.uol.com.br/conteudo_legenda/6b20bd2849c3215649eef2000b9d0b62.jpg" alt="some text" width=50 height=30></li>
-        </td>
-      </ul>
-      <ul class="list-group">
-        <td>
-          <li class="list-group-item list-group-item-light"><a href="#" class="link_thumb" style="color: #848484;">UpLoad de Dados &nbsp &nbsp &nbsp <img src="https://silvrback.s3.amazonaws.com/uploads/fae5d2c9-6a2c-46cf-b018-3b906c93d8db/upload-jsf-inputFile_large.png" alt="some text" width=50 height=30></li>
-        </td>
-          
-      </ul>
-
       <div class="results">
         <table id="result_list" class="table table-striped table-bordered dt-responsive nowrap no-footer">
           <thead>
             <tr>
-              <th scope="col" class="action-checkbox-column">
-                <div class="text"><span><input type="checkbox" id="action-toggle"></span></div>
-                <div class="clear"></div>
-              </th>
               <th scope="col" class="sortable column-documment_name">
-                <div class="text"><a href="?o=1">ACTION</a></div>
+                <div class="text"><a href="?o=1">RATE</a></div>
                 <div class="clear"></div>
               </th>
               <th scope="col" class="sortable column-doc_code">
@@ -41,26 +24,61 @@
                 <div class="clear"></div>
               </th>
               <th scope="col" class="sortable column-format_doc">
-                <div class="text"><a href="?o=3">RANGE</a></div>
+                <div class="text"><a href="?o=3">TERM</a></div>
                 <div class="clear"></div>
               </th>
             </tr>
           </thead>
           <tbody>
-            {% for item in tables %}
+            {% for item in tables2 %}
             <tr>
-              <td class="field-result"></td>
-              <td class="field-result">{{ item['ACTIONS'] }}</td>
+              <td class="field-result">{{ item['RATE'] }}</td>
               <td class="field-result">{{ item['VALUE'] }}</td>
-              <td class="field-result">{{ item['RANGE'] }}</td>
-
+              <td class="field-result">{{ item['TERM'] }}</td>
             </tr>
             {% endfor %}
           </tbody>
+      </table>
+    </div>
+    <p class='text-muted'>By: https://www.poupardinheiro.com.br</p>
+
+  </div>
+
+    <div class="content-section">
+      <h4>Coins and Stock Exchange</h4>
+        <p class='text-muted'>Coins and Stock Exchange</p>
+
+        <div class="results">
+          <table id="result_list" class="table table-striped table-bordered dt-responsive nowrap no-footer">
+            <thead>
+              <tr>
+                <th scope="col" class="sortable column-documment_name">
+                  <div class="text"><a href="?o=1">ACTION</a></div>
+                  <div class="clear"></div>
+                </th>
+                <th scope="col" class="sortable column-doc_code">
+                  <div class="text"><a href="?o=2">VALUE</a></div>
+                  <div class="clear"></div>
+                </th>
+                <th scope="col" class="sortable column-format_doc">
+                  <div class="text"><a href="?o=3">RANGE</a></div>
+                  <div class="clear"></div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in tables1 %}
+              <tr>
+                <td class="field-result">{{ item['ACTIONS'] }}</td>
+                <td class="field-result">{{ item['VALUES'] }}</td>
+                <td class="field-result">{{ item['RANGE'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
         </table>
       </div>
-
-      </div>
-
+      <p class='text-muted'>By: https://www.poupardinheiro.com.br</p>
+  
+    </div>
 
 {% endblock content %}

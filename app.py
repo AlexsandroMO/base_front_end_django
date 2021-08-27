@@ -3,7 +3,6 @@ import code_screp as code
 
 app = Flask('app')
 
-
 def hello_world():
   return 'Hello, World!'
 
@@ -12,21 +11,12 @@ def hello_world():
 def home():
 
   df = code.rateall()
-  #df = [df]
+  df1 = df[0]
+  df2 = df[1]
 
-  return render_template('apps/home.html', df=df, tables=df.to_dict(orient='records'))
+  return render_template('apps/home.html', tables1=df1.to_dict(orient='records'), tables2=df2.to_dict(orient='records'))
   #return render_template('apps/home.html', df=df, tables=[df.to_html(classes='data')], titles = ['ACTIONS', 'VALUE','RANGE'])
 
-
-'''data = pd.read_excel('dummy_data.xlsx')
-    data.set_index(['Name'], inplace=True)
-    data.index.name=None
-    females = data.loc[data.Gender=='f']
-    males = data.loc[data.Gender=='m']
-    return render_template('view.html',tables=[females.to_html(classes='female'), males.to_html(classes='male')],
-    titles = ['na', 'Female surfers', 'Male surfers'])
-    titles=df.columns.values
-'''
 
 if __name__ == '__main__':
     #app.run(host='0.0.0.0', port=8080)

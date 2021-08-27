@@ -1,1 +1,3 @@
-console.log('hello!');
+$('.multiplo').select2({
+    placeholder: 'selecione'
+  });

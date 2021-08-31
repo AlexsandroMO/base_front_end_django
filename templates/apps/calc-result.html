@@ -2,21 +2,6 @@
 {% block content %}
 
   <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Invoice</h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Invoice</li>
-          </ol>
-        </div>
-      </div>
-    </div><!-- /.container-fluid -->
-  </section>
 
   <section class="content">
     <div class="container-fluid">
@@ -24,34 +9,11 @@
         <div class="col-12">
           <div class="callout callout-info">
             <h5><i class="fas fa-info"></i> Note:</h5>
-            This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-            <form action="/calc_result" method="POST" >
-              <div class="card-body">
-                <div class="form-group">
-                  <label for="exampleInputNumberCalc">VALUE CALC</label>
-                  <input type="number" class="form-control" id="exampleInputNumberCalc" name = "Number-Calc" placeholder="Enter Value Calc">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputNumberRate">VALUE RATE CDI</label>
-                  <input type="number" class="form-control" id="exampleInputNumberRate" name = "Number-Rate" placeholder="Enter Value Rate">
-                </div>
-                <div class="form-group">
-                  <div class="form-group">
-                      <label for="exampleInputNumberMonth">VALUE MONTH</label>
-                      <input type="number" class="form-control" id="exampleInputNumberMonth" name = "Number-Month" placeholder="Enter Number Months">
-                    </div>
-                  </div>
-                </div>
-              
-              <!-- /.card-body -->
-              
-                <button type="submit" class="btn btn-primary">Submit</button>
-             
-            </div>
-            </form>
-          
-          </div>
+            Value applied after {{num_month}} months is R$ {{result[1]}}<br>
+            Yield {} in {} mouths<br>
+            The amount invested in one year at 100% of the CDI would be R$ {{result[2]}}
 
+          </div>
 
           <!-- Main content -->
           <div class="invoice p-3 mb-3">
@@ -108,40 +70,19 @@
                   <tr>
                     <th>Qty</th>
                     <th>Product</th>
-                    <th>Serial #</th>
-                    <th>Description</th>
-                    <th>Subtotal</th>
+                    <th>Value</th>
+                    <th>Time</th>
                   </tr>
                   </thead>
                   <tbody>
+                  {% for item in tables2 %}
                   <tr>
-                    <td>1</td>
-                    <td>Call of Duty</td>
-                    <td>455-981-221</td>
-                    <td>El snort testosterone trophy driving gloves handsome</td>
-                    <td>$64.50</td>
+                    <td>{{ item.index }}</td>
+                    <td>{{ item['RATE'] }}</td>
+                    <td>{{ item['VALUE'] }}</td>
+                    <td>{{ item['TERM'] }}</td>
                   </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Need for Speed IV</td>
-                    <td>247-925-726</td>
-                    <td>Wes Anderson umami biodiesel</td>
-                    <td>$50.00</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Monsters DVD</td>
-                    <td>735-845-642</td>
-                    <td>Terry Richardson helvetica tousled street art master</td>
-                    <td>$10.70</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Grown Ups Blue Ray</td>
-                    <td>422-568-642</td>
-                    <td>Tousled lomo letterpress</td>
-                    <td>$25.99</td>
-                  </tr>
+                  {% endfor %}
                   </tbody>
                 </table>
               </div>
@@ -170,22 +111,14 @@
 
                 <div class="table-responsive">
                   <table class="table">
-                    <tbody><tr>
-                      <th style="width:50%">Subtotal:</th>
-                      <td>$250.30</td>
-                    </tr>
+                    <tbody>
+                    {% for item in tables1 %}
                     <tr>
-                      <th>Tax (9.3%)</th>
-                      <td>$10.34</td>
+                      <th style="width:50%">{{ item['ACTIONS'] }}</th>
+                      <th>{{ item['VALUES'] }}</th>
+                      <th>{{ item['RANGE'] }}</th>
                     </tr>
-                    <tr>
-                      <th>Shipping:</th>
-                      <td>$5.80</td>
-                    </tr>
-                    <tr>
-                      <th>Total:</th>
-                      <td>$265.24</td>
-                    </tr>
+                    {% endfor %}
                   </tbody></table>
                 </div>
               </div>

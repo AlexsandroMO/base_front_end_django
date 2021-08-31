@@ -79,47 +79,38 @@ def rateall():
 
     stock_exchange = pd.DataFrame(data=result_coins,columns=['ACTIONS','VALUES','RANGE'])
 
-    return [stock_exchange, rate_data]
+    return [stock_exchange, rate_data, result_coins]
+
+
+
+def result_calc(num_calc, num_rate, num_month):
+
+    rate_all = rateall()
+
+    cdi_year = ((rate_all[1]['VALUE'][2]) * 12)
+    cdi_month = ((rate_all[1]['VALUE'][3]) * num_month)
+
+    print('-------- ', rate_all[1]['VALUE'][2])
+
+    #rendimento CDI 100% EM X MESES
+    rend_cdi_oh = (cdi_month * num_calc) / 100
+    result1 = num_calc + rend_cdi_oh
+
+    #rendimento CDI acima de 100% EM X MESES
+    rend_cdi_x = (cdi_month * (num_rate / 100) * num_calc) / 100
+    result2 = num_calc + rend_cdi_x
+
+    #rendimento CDI 100% EM 12 MESES
+    rend_cdi_oh = (cdi_year * num_calc) / 100
+    result3 = num_calc + rend_cdi_oh
+
+    #rendimento CDI acima de 100% EM 12 MESES
+    rend_cdi_x = (cdi_year * (num_rate / 100) * num_calc) / 100
+    result4 = num_calc + rend_cdi_x
+
+    return [result1, result2, result3, result4]
 
 
 
 
 
-
-
-#-----------------------------------------------
-'''
-
-
-cdi_year = ((rate_all[1][1]) * 12)
-cdi_mouth = ((rate_all[1][1]) * mouth)
-
-#rendimento CDI 100% EM X MESES
-rend_cdi_oh = (cdi_mouth * val) / 100
-result1 = val + rend_cdi_oh
-
-#rendimento CDI acima de 100% EM X MESES
-rend_cdi_x = (cdi_mouth * (rate_cdi / 100) * val) / 100
-result2 = val + rend_cdi_x
-
-#rendimento CDI 100% EM 12 MESES
-rend_cdi_oh = (cdi_year * val) / 100
-result3 = val + rend_cdi_oh
-
-#rendimento CDI acima de 100% EM 12 MESES
-rend_cdi_x = (cdi_year * (rate_cdi / 100) * val) / 100
-result4 = val + rend_cdi_x
-
-print('\n-------------------------------------------------')
-print('Value applied in {} mounths is R$ {}'.format(mouth, result2))
-print('The amount invested in one year at 100% of the CDI would be R$ {}'.format(result3))
-print('--------------------------------------------------\n\n')
-
-print('===============================\n|       TAXAS RENDA FIXA      |\n===============================')
-print(rate_data)
-print('-------------------------------\n\n\n')
-
-print('==========================================\n|              TRADING FLOOR             |\n==========================================')
-print(stock_exchange)
-print('-------------------------------------------')
-print('By: https://www.poupardinheiro.com.br/\n\n\n')'''

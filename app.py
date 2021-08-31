@@ -10,11 +10,17 @@ def hello_world():
 @app.route("/home")
 def home():
 
+  return render_template('apps/home.html')
+  #return render_template('apps/home.html', df=df, tables=[df.to_html(classes='data')], titles = ['ACTIONS', 'VALUE','RANGE'])
+
+@app.route("/calc")
+def calc():
+
   df = code.rateall()
   df1 = df[0]
   df2 = df[1]
 
-  return render_template('apps/home.html', tables1=df1.to_dict(orient='records'), tables2=df2.to_dict(orient='records'))
+  return render_template('apps/calc.html', tables1=df1.to_dict(orient='records'), tables2=df2.to_dict(orient='records'))
   #return render_template('apps/home.html', df=df, tables=[df.to_html(classes='data')], titles = ['ACTIONS', 'VALUE','RANGE'])
 
 
